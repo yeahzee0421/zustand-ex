@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { useCounterStore } from "./store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => {
+  const count = useCounterStore((state) => state.count);
+  return <OtherComponent count={count} />;
+};
+
+const OtherComponent = ({count}: {count: number}) => {
+  const increment = useCounterStore((state) => state.increment);
+  const decrement = useCounterStore((state)=> state.decrement);
+  return(
+    <div>
+      {count}
+      <div>
+        <button onClick={increment}> Increment </button>
+        <button onClick={decrement}> Decreament </button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
