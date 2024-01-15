@@ -9,6 +9,7 @@
 1. Whenever accessing a piece of State we've done function or anywhere, always want to try to be as specific as possible and only access the thing that I need.
 <br>
 `const count = useCounterStore((state) => state.count); `
+<br>
 `const {count} = useCounterStore((state) => state); `
 first one is better. 
 <br>
